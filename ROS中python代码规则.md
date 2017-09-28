@@ -72,3 +72,29 @@ if __name__ == '__main__':
 ```
 
 ##### Modules
+
+在ROS中添加python模块，标准的做法是将Python模块放到`src/your_package`这个子目录中，让模块最高一层的名称和package名称相同，并且该目录下要有`__init__.py`文件。
+之前的rosbuil编译系统中，可以把python module放到`src/`下，但是这样破坏了python的安装传统，在catkin中不允许这样。
+
+catkin会用一种类似于标准python`setup.py`脚本的方法来安装python包，一版写作这样：
+```
+## ! DO NOT MANUALLY INVOKE THIS setup.py, USE CATKIN INSTEAD
+
+from distutils.core import setup
+from catkin_pkg.python_setup import generate_distutils_setup
+
+# fetch values from package.xml
+setup_args = generate_distutils_setup(
+    packages=['your_package'],
+    package_dir={'': 'src'})
+
+setup(**setup_args)
+```
+
+这个`setup.py`只适用于catkin，并且不能直接像这样调用`python setup.py`
+
+把这个`setup.py`脚本放到你package的最高层目录，然后在`CMakeLists.txt`里加上
+```
+catkin_python_setup()
+```
+这样编译系统就会安装我们的python modules. 不要用它来安装可执行脚本。
