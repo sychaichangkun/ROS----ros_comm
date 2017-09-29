@@ -2,7 +2,7 @@
 
 rosmaster这个包实现了ROS当中的Master. Node与Master的通信调用了XMLRPC的API，因此ROS开发者不用指定通信的具体细节. 大多数程序运行时都也不会直接调用rosmaster，因为运行roscore时会自动启动master.
 
-rosmaster这个工具包已经废弃了deprecated，原先启动可以通过zenmaster或者rosmaster --core，但现在都用roscore来启动master以及rosout,param service。
+rosmaster这个工具包抛弃了之前的zenmaster，要启动master也不建议直接用rosmaster来启动，因为现在都用roscore或者roslaunch，他们会启动rosmaster以及rosout,param service。
 
 rosmaster的可选参数有：
 ```

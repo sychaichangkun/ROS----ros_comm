@@ -31,7 +31,7 @@
 # POSSIBILITY OF SUCH DAMAGE.
 #
 # Revision $Id$
-
+print('rosmaster module __init__.py')
 from .main import rosmaster_main
 
 from .master import DEFAULT_MASTER_PORT
