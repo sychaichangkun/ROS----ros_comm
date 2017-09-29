@@ -32,4 +32,9 @@
 # POSSIBILITY OF SUCH DAMAGE.
 
 import rosmaster
+print("======")
+print("rosmaster模块启动")
+print("import rosmaster")
+print("rosmaster.rosmaster_main()")
+print("======")
 rosmaster.rosmaster_main()
